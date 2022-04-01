@@ -1,0 +1,27 @@
+queries:
+
+query 1: db.ristoranti.find({},{"_id":1,"address":1,"name":1,"cuisine":1,"borough":1,"grades":1,"restaurant_id":1}).sort({name:1})
+
+query 2: db.ristoranti.find({"grades.score":{$mod:[7,0]}},{"_id":0,"name":1,"restaurant_id":1,"grades.score":1})
+
+query 3: db.ristoranti.find({"address.coord.1":{ $gt: 42, $lt: 52 }},{"_id":1,"name":1,"address.coord":1,"address.street":1,"address.zipcode":1})
+
+query 4: db.ristoranti.find({"grades.1.score":9,"grades.1.grade":"A","grades.1.date": ISODate ("2014-08-11") },{"_id":0,"name":1,"grades.score":1})
+
+query 5: db.ristoranti.find({ $or : [ {"cuisine":{$nin: ["American","Chinese"]}},{"name":{$regex:/^Wil/}}]},{"_id":1,"name":1,"borough":1,"cuisine":1})
+
+multiple answer:
+
+1: C
+
+2: D
+
+3: C
+
+4: A
+
+5: D
+
+6: C 
+
+7: D
